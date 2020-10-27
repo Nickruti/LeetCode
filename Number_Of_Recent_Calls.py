@@ -18,3 +18,13 @@ class RecentCounter:
 # Your RecentCounter object will be instantiated and called as such:
 # obj = RecentCounter()
 # param_1 = obj.ping(t)
+
+'''
+Input----
+["RecentCounter","ping","ping","ping","ping"]
+[[],[1],[100],[3001],[3002]]
+
+Output----
+[null,1,2,3,3]
+'''
+
