@@ -1,8 +1,11 @@
-// url - https://leetcode.com/problems/longest-common-subsequence/
 
-class Solution {
-public:
-    int longestCommonSubsequence(string text1, string text2) {
+
+#include <iostream>
+#include <bits/stdc++.h>
+
+using namespace std;
+
+int longestCommonSubsequence(string text1, string text2) {
         int sl1 = text1.length(), sl2 = text2.length();
         
         int subseq[sl1+1][sl2+1];
@@ -31,6 +34,33 @@ public:
             }
         }
         
-        return subseq[sl1][sl2];
-    }
-};
+        int i = sl1, j = sl2;
+        vector<char> ans;
+        
+        while(i && j)
+        {
+            while(i && j && subseq[i][j] == subseq[i-1][j])
+            {
+                i--;
+            }
+            ans.push_back(text1[i-1]);
+            i--;
+            while(i && j && subseq[i][j] == subseq[i][j-1])
+            {
+                j--;
+            }
+        }
+        
+        for (auto ir = ans.rbegin(); ir != ans.rend(); ++ir)
+        cout << *ir ;
+        //return subseq[sl1][sl2];
+}
+
+int main()
+{
+    string t1, t2;
+    cin >> t1;
+    cin >> t2;
+    longestCommonSubsequence(t1, t2);
+    return 0;
+}
