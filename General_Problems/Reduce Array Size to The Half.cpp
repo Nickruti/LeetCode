@@ -46,3 +46,24 @@ public:
       
     }
 };
+
+class Solution {
+public:
+    int minSetSize(vector<int>& arr) {
+        int n = arr.size();
+        unordered_map<int, int> cnt;
+        for (int x : arr) ++cnt[x];
+
+        vector<int> bucket(n + 1);
+        for (auto [_, freq] : cnt) ++bucket[freq];
+
+        int ans = 0, removed = 0, half = n / 2, freq = n;
+        while (removed < half) {
+            ans += 1;
+            while (bucket[freq] == 0) --freq;
+            removed += freq;
+            --bucket[freq];
+        }
+        return ans;
+    }
+};
