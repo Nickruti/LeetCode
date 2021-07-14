@@ -27,7 +27,7 @@ class Solution:
                     
         return i  
       
-# Optimised Solution using Binary Search
+# Optimised Solution using Binary Search O(logn) time and space
 class Solution:
     def findPeakElement(self, nums: List[int]) -> int:
         
@@ -42,6 +42,25 @@ class Solution:
             return binarySearch(mid+1, r)
         
         return binarySearch(0, len(nums)-1)
+    
+# Iterative Binary Search O(logn) - time and O(1) - Space
+
+class Solution:
+    def findPeakElement(self, nums: List[int]) -> int:
+        
+        l = 0
+        r = len(nums)-1
+        
+        while (l < r):
+            mid = (l + r)//2
+            
+            if nums[mid] > nums[mid+1]:
+                r = mid
+            else:
+                l = mid + 1
+                
+        return l
+        
         
 
                 
