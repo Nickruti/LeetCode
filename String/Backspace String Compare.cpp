@@ -52,3 +52,58 @@ public:
                  
     }
 };
+
+// Second method - Space - O(1), Time - O(M+N) 
+
+class Solution {
+public:
+    bool backspaceCompare(string s, string t) {
+        
+        int i = s.length() - 1, j = t.length() - 1;
+        int sS = 0, sT = 0;
+        
+        while (i >= 0 || j >= 0)
+        {
+            while(i >= 0)
+            {
+                if(s[i] == '#')
+                {
+                    sS++;
+                    i--;
+                }
+                else if(sS > 0)
+                {
+                    sS--;
+                    i--;
+                }
+                else break;
+            }
+            while( j >= 0)
+            {
+                if(t[j] == '#')
+                {
+                    sT++;
+                    j--;
+                }
+                else if(sT > 0)
+                {
+                    sT--;
+                    j--;
+                }
+                else break;
+            }
+            
+            if((i >= 0) && (j >= 0) && (s[i] != t[j]))
+            {
+                return false;
+            }   
+            if ((i >= 0) != (j >= 0))
+            {
+                return false;
+            }    
+            i--;
+            j--;
+        }
+        return true;           
+    }
+};
