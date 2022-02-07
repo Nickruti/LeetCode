@@ -34,3 +34,24 @@ public:
     }
 };
 
+// Third Solution
+
+class Solution {
+public:
+    char findTheDifference(string s, string t) {
+        if (s == "") return t[0];
+        
+        int i = 1;
+        char temp = s[0] ^ t[0];
+        while(i < s.length())
+        {
+            temp = temp ^ s[i];
+            temp = temp ^ t[i];
+            i++;
+        }
+        temp = temp ^ t[i];
+        
+        return temp;
+    }
+};
+
